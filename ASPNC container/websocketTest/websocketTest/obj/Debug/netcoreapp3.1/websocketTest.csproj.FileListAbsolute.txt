@@ -1,5 +1,4 @@
 C:\Users\vince\source\repos\websocketTest\websocketTest\bin\Debug\netcoreapp3.1\websocketTest.exe
-C:\Users\vince\source\repos\websocketTest\websocketTest\obj\Debug\netcoreapp3.1\websocketTest.csprojAssemblyReference.cache
 C:\Users\vince\source\repos\websocketTest\websocketTest\obj\Debug\netcoreapp3.1\websocketTest.AssemblyInfoInputs.cache
 C:\Users\vince\source\repos\websocketTest\websocketTest\obj\Debug\netcoreapp3.1\websocketTest.AssemblyInfo.cs
 C:\Users\vince\source\repos\websocketTest\websocketTest\bin\Debug\netcoreapp3.1\websocketTest.deps.json
