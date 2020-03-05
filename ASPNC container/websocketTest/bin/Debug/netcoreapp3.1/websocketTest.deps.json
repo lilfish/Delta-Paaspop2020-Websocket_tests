@@ -8,12 +8,14 @@
     ".NETCoreApp,Version=v3.1": {
       "websocketTest/1.0.0": {
         "dependencies": {
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.9.10",
           "vtortola.WebSocketListener": "3.0.0"
         },
         "runtime": {
           "websocketTest.dll": {}
         }
       },
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.9.10": {},
       "System.Threading.Tasks.Dataflow/4.8.0": {},
       "vtortola.WebSocketListener/3.0.0": {
         "dependencies": {
@@ -33,6 +35,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.9.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-d5/5CDc4TAjrgO9oyyj+FHUDVumxgrlCMJqDtUX4GyTnr1Q/BP88PhnVunRZ9AQcL2UQkM4EkRNyFelPXunHtw==",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.9.10",
+      "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.9.10.nupkg.sha512"
     },
     "System.Threading.Tasks.Dataflow/4.8.0": {
       "type": "package",
