@@ -1,0 +1,14 @@
+{
+  "name": "uwebsockets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+	"scripts": {
+    "start": "node index.js"
+  },
+  "author": "Vincent V",
+  "license": "ISC",
+  "dependencies": {
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v17.3.0"
+  }
+}
