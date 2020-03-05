@@ -1,10 +1,10 @@
-console.log("uWebsocket test? xd2");
+console.log("uWebsocket test? xd");
 /* Non-SSL is simply App() */
-require('uWebSockets.js').App().ws('/*', {
+require('uWebSockets.js').App().ws("/", {
 	open: (ws, req) => {
     console.log('A WebSocket connected via URL: ' + req.getUrl() + '!');
-	ws.send("HI?");
-  },
+  
+	},
   /* For brevity we skip the other events */
   message: (ws, message, isBinary) => {
 		console.log("got message:", AB2String(message));
