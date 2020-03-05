@@ -1,0 +1,13 @@
+C:\Users\vince\source\repos\websocketTest\websocketTest\bin\Release\netcoreapp3.1\websocketTest.exe
+C:\Users\vince\source\repos\websocketTest\websocketTest\bin\Release\netcoreapp3.1\websocketTest.deps.json
+C:\Users\vince\source\repos\websocketTest\websocketTest\bin\Release\netcoreapp3.1\websocketTest.runtimeconfig.json
+C:\Users\vince\source\repos\websocketTest\websocketTest\bin\Release\netcoreapp3.1\websocketTest.runtimeconfig.dev.json
+C:\Users\vince\source\repos\websocketTest\websocketTest\bin\Release\netcoreapp3.1\websocketTest.dll
+C:\Users\vince\source\repos\websocketTest\websocketTest\bin\Release\netcoreapp3.1\websocketTest.pdb
+C:\Users\vince\source\repos\websocketTest\websocketTest\bin\Release\netcoreapp3.1\vtortola.WebSockets.dll
+C:\Users\vince\source\repos\websocketTest\websocketTest\obj\Release\netcoreapp3.1\websocketTest.csprojAssemblyReference.cache
+C:\Users\vince\source\repos\websocketTest\websocketTest\obj\Release\netcoreapp3.1\websocketTest.AssemblyInfoInputs.cache
+C:\Users\vince\source\repos\websocketTest\websocketTest\obj\Release\netcoreapp3.1\websocketTest.AssemblyInfo.cs
+C:\Users\vince\source\repos\websocketTest\websocketTest\obj\Release\netcoreapp3.1\websocketTest.csproj.CopyComplete
+C:\Users\vince\source\repos\websocketTest\websocketTest\obj\Release\netcoreapp3.1\websocketTest.dll
+C:\Users\vince\source\repos\websocketTest\websocketTest\obj\Release\netcoreapp3.1\websocketTest.pdb
