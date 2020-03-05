@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "websocketTest": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
