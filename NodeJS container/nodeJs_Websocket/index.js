@@ -11,3 +11,5 @@ var server = ws.createServer(function (conn) {
 		console.log("Connection closed")
 	})
 }).listen(9000)
+
+const wss = new WebSocket.Server({ port: 9000 });
