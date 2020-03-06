@@ -12,18 +12,16 @@ namespace websocketTest
         {
             CancellationTokenSource cancellation = new CancellationTokenSource();
 
-            var endpoint = new IPEndPoint(IPAddress.Any, 9000);
-            var server = new WebSocketListener(endpoint);
+            var server = new WebSocketListener(new 
             var rfc = new vtortola.WebSockets.WebSocketFactoryRfc6455();
 
             server.Standards.RegisterStandard(rfc);
             server.StartAsync();
 
-            Console.WriteLine("Echo Server started at " + endpoint.ToString());
+            Console.WriteLine("Echo Server started at " + server.ToString());
 
             var task = Task.Run(() => AcceptWebSocketClientsAsync(server, cancellation.Token));
 	    Console.WriteLine("No turning back now, server started");
-	    while(true){ }
         }
 
         static async Task AcceptWebSocketClientsAsync(WebSocketListener server, CancellationToken token)
