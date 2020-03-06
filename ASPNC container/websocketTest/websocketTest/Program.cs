@@ -22,8 +22,8 @@ namespace websocketTest
             Console.WriteLine("Echo Server started at " + endpoint.ToString());
 
             var task = Task.Run(() => AcceptWebSocketClientsAsync(server, cancellation.Token));
-	    Console.WriteLine("No turning back now, server started");
-	    while(true){ }
+            Console.WriteLine("No turning back now, server started");
+            while (true) { }
         }
 
         static async Task AcceptWebSocketClientsAsync(WebSocketListener server, CancellationToken token)
@@ -51,14 +51,17 @@ namespace websocketTest
                 while (ws.IsConnected && !cancellation.IsCancellationRequested)
                 {
                     String msg = await ws.ReadStringAsync(cancellation).ConfigureAwait(false);
-                    if (msg != null){
+                    if (msg != null)
+                    {
                         ws.WriteString(msg);
                         Console.WriteLine("sending: " + msg);
-                    } else {
-	                ws.WriteString("HOI");
-			Console.WriteLine("sending HOI");
-		    }
-		    //ws.Dispose();
+                    }
+                    else
+                    {
+                        ws.WriteString("HOI");
+                        Console.WriteLine("sending HOI");
+                    }
+                    //ws.Dispose();
                 }
             }
             catch (Exception aex)
