@@ -33,8 +33,10 @@ namespace websocketTest
                 try
                 {
                     var ws = await server.AcceptWebSocketAsync(token).ConfigureAwait(false);
-                    if (ws != null)
+                    if (ws != null){
                         Task.Run(() => HandleConnectionAsync(ws, token));
+                    } else {
+			ws.
                 }
                 catch (Exception aex)
                 {
@@ -51,14 +53,8 @@ namespace websocketTest
                 while (ws.IsConnected && !cancellation.IsCancellationRequested)
                 {
                     String msg = await ws.ReadStringAsync(cancellation).ConfigureAwait(false);
-                    if (msg != null){
+                    if (msg != null)
                         ws.WriteString(msg);
-                        Console.WriteLine("sending: " + msg);
-                    } else {
-	                ws.WriteString("HOI");
-			Console.WriteLine("sending HOI");
-		    }
-		    //ws.Dispose();
                 }
             }
             catch (Exception aex)
