@@ -1,5 +1,5 @@
   config:
-    target: "ws://173.249.12.137:9000/"
+    target: "ws://173.249.12.137:9001/"
     phases:
       - duration: 600
         arrivalRate: 100
