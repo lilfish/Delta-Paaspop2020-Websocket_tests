@@ -1,0 +1,14 @@
+{
+  "name": "nodejs_loadbalancer_ws",
+  "version": "1.0.0",
+  "description": "load balancer test contianer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vis",
+  "license": "ISC",
+  "dependencies": {
+    "nodejs-websocket": "^1.7.2"
+  }
+}
