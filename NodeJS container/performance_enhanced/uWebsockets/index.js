@@ -8,13 +8,11 @@ const {
 	threadId
 } = require('worker_threads');
 
-var { 
-	connections,
-	connected,
-	disconnected,
-	messages,
-	drained
-} = 0;
+var connections = 0;
+var	connected = 0;
+var	disconnected = 0;
+var	messages = 0;
+var	drained = 0;
 
 const os = require('os');
 
