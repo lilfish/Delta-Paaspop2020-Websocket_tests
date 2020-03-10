@@ -3,7 +3,7 @@
     phases:
       - duration: 6000
         arrivalRate: 1000
-        rampTo: 1000 
+        rampTo: 1000    
     ws:
       # Ignore SSL certificate errors
       # - useful in *development* with self-signed certs
@@ -11,7 +11,9 @@
   scenarios:
     - engine: "ws"
       flow:
-        - send: "hello"
-        - think: 600 # wait 10 mins
-        - send: "hello again"
+        - send: "A"
+        - think: 2 # wait 10 mins
+        - send: "B"
+        - think: 4
+        - send: "C"
         - think: 600
