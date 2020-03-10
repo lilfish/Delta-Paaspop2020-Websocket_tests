@@ -1,9 +1,9 @@
   config:
-    target: "ws://173.249.12.137:9000/"
+    target: "ws://173.249.12.137:9050/"
     phases:
       - duration: 6000
         arrivalRate: 1000
-        rampTo: 1000    
+        rampTo: 1000
     ws:
       # Ignore SSL certificate errors
       # - useful in *development* with self-signed certs
@@ -11,9 +11,5 @@
   scenarios:
     - engine: "ws"
       flow:
-        - send: "A"
-        - think: 2 # wait 10 mins
-        - send: "B"
-        - think: 4
-        - send: "C"
-        - think: 600
+        - think: 6000
+        - send: "byebye"

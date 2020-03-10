@@ -13,6 +13,7 @@ var	connected = 0;
 var	disconnected = 0;
 var	messages = 0;
 var	drained = 0;
+var counter = 0;
 
 const os = require('os');
 
@@ -21,7 +22,8 @@ if (isMainThread) {
 	/* Main thread loops over all CPUs */
 	/* In this case we only spawn two (hardcoded) */
 	/*os.cpus()*/
-	[0, 1].forEach(() => {
+	[0, 1, 2, 3, 4, 5].forEach((worker) => {
+		console.log("Spawning worker ", worker);
 		/* Spawn a new thread running this source file */
 		new Worker(__filename);
 	});
@@ -46,11 +48,11 @@ if (isMainThread) {
 		drain: (ws) => {
 			print();
 			drained-=-1;
-			connections-=1;
 		},
 		close: (ws, code, message) => {
 			print();
 			disconnected-=-1;
+			connections-=1;
 		}
 
 	}).any('/*', (res, req) => {
@@ -71,6 +73,10 @@ if (isMainThread) {
 	}
 
 	function print(){
-		console.log("connected: ", connected, "; disconnected: " , disconnected , "; connections made: ", connections, "; messages received: " , messages, "; drained: ", drained , ";");
+		counter-=-1;
+		if(counter == 100){
+			console.log("connected: ", connected, "; disconnected: " , disconnected , "; connections made: ", connections, "; messages received: " , messages, "; drained: ", drained , ";");
+			counter = 0;
+		}
 	}
 };
