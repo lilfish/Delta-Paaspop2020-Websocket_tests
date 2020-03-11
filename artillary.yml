@@ -1,9 +1,8 @@
   config:
-    target: "ws://173.249.12.137:9050/"
+    target: "ws://173.249.12.137:9000/"
     phases:
-      - duration: 6000
-        arrivalRate: 1000
-        rampTo: 1000
+      - arrivalRate: 200
+        duration: 175
     ws:
       # Ignore SSL certificate errors
       # - useful in *development* with self-signed certs
