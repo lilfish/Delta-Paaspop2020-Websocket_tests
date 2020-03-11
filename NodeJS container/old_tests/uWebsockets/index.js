@@ -3,7 +3,8 @@ var variables = {
 	disconnected: 0,
 	messages: 0,
 	total_connected: 0,
-	drained: 0
+	drained: 0,
+	counter: 0
 }
 
 /* Non-SSL is simply App() */
@@ -48,13 +49,13 @@ function AB2String(message){
 }
 
 function print(){
-	counter-=-1;
-	if(counter == 50){
+	variables.counter-=-1;
+	if(variables.counter == 50){
 		console.log("connected: ", variables.connected, 
 		"; disconnected: " , variables.disconnected , 
 		"; connections made: ", variables.total_connected, 
 		"; messages received: " , variables.messages, 
 		"; drained: ", variables.drained , ";");
-		counter = 0;
+		variables.counter = 0;
 	}
 }
