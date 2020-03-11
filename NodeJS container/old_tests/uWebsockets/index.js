@@ -18,7 +18,7 @@ const app = uws.App().ws('/*', {
   /* For brevity we skip the other events */
   message: (ws, message, isBinary) => {
 		variables.messages-=-1;
-		console.log("got message:", AB2String(message));
+		console.log(message, AB2String(message));
     /* Ok is false if backpressure was built up, wait for drain */
 		let ok = ws.send(message, isBinary);
   },
