@@ -1,0 +1,22 @@
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
+0e37176f4fdb        nodecon             0.00%               17.86MiB / 7.8GiB   0.22%               0B / 0B             24.6kB / 8.19kB     19
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
+0e37176f4fdb        nodecon             66.88%              82.82MiB / 7.8GiB   1.04%               3.5MB / 2.38MB      28.7kB / 8.19kB     19
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
+0e37176f4fdb        nodecon             52.85%              141.2MiB / 7.8GiB   1.77%               9.44MB / 6.44MB     28.7kB / 8.19kB     19
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
+0e37176f4fdb        nodecon             63.78%              204.7MiB / 7.8GiB   2.56%               15.5MB / 10.6MB     28.7kB / 8.19kB     19
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
+0e37176f4fdb        nodecon             35.76%              251.3MiB / 7.8GiB   3.15%               20.3MB / 13.9MB     28.7kB / 8.19kB     19
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
+0e37176f4fdb        nodecon             13.19%              262.5MiB / 7.8GiB   3.29%               21.7MB / 14.8MB     28.7kB / 8.19kB     19
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
+0e37176f4fdb        nodecon             16.23%              277.3MiB / 7.8GiB   3.47%               22.9MB / 15.6MB     28.7kB / 8.19kB     19
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
+0e37176f4fdb        nodecon             2.78%               288.3MiB / 7.8GiB   3.61%               24.1MB / 16.4MB     28.7kB / 8.19kB     19
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
+0e37176f4fdb        nodecon             0.00%               288.2MiB / 7.8GiB   3.61%               24.1MB / 16.4MB     28.7kB / 8.19kB     19
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
+0e37176f4fdb        nodecon             0.00%               260.7MiB / 7.8GiB   3.26%               24.1MB / 16.4MB     28.7kB / 8.19kB     19
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
+0e37176f4fdb        nodecon             0.00%               260.8MiB / 7.8GiB   3.27%               24.1MB / 16.4MB     28.7kB / 8.19kB     19
