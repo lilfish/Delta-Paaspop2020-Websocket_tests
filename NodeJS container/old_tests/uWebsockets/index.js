@@ -1,9 +1,9 @@
 var variables = {
-	connected = 0,
-	disconnected = 0,
-	messages = 0,
-	total_connected = 0,
-	drained = 0
+	connected: 0,
+	disconnected: 0,
+	messages: 0,
+	total_connected: 0,
+	drained: 0
 }
 
 /* Non-SSL is simply App() */
