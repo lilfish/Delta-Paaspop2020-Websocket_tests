@@ -1,7 +1,7 @@
   config:
     target: "ws://173.249.12.137:9000/"
     phases:
-      - arrivalRate: 200
+      - arrivalRate: 400
         duration: 175
     ws:
       # Ignore SSL certificate errors
@@ -10,5 +10,6 @@
   scenarios:
     - engine: "ws"
       flow:
+        # - send: "A"
         - think: 6000
         - send: "byebye"

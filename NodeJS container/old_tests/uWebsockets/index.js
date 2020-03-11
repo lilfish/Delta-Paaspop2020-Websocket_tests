@@ -1,18 +1,19 @@
+const uws = require('uWebSockets.js');
 var variables = {
 	connected: 0,
 	disconnected: 0,
 	messages: 0,
 	total_connected: 0,
-	drained: 0,
-	counter: 0
+	drained: 0
 }
 
 /* Non-SSL is simply App() */
-require('uWebSockets.js').App().ws('/*', {
+const app = uws.App().ws('/*', {
 	open: (ws, req) => {
-		print();
-		variables.connected-=-1;
-		variables.total_connected-=-1;
+		var x = ws.getRemoteAddress();
+		// console.log(ws.getRemoteAddress());
+		console.log(req.getUrl());
+		console.log(x, AB2String(x))
   },
   /* For brevity we skip the other events */
   message: (ws, message, isBinary) => {
@@ -49,13 +50,9 @@ function AB2String(message){
 }
 
 function print(){
-	variables.counter-=-1;
-	if(variables.counter == 50){
-		console.log("connected: ", variables.connected, 
-		"; disconnected: " , variables.disconnected , 
-		"; connections made: ", variables.total_connected, 
-		"; messages received: " , variables.messages, 
-		"; drained: ", variables.drained , ";");
-		variables.counter = 0;
-	}
+	console.log("connected: ", variables.connected, 
+	"; disconnected: " , variables.disconnected , 
+	"; connections made: ", variables.total_connected, 
+	"; messages received: " , variables.messages, 
+	"; drained: ", variables.drained , ";");
 }
