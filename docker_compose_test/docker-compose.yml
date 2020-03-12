@@ -18,20 +18,26 @@ services:
   admin_panel:
     build:
       context: ./adminpanel
+    container_name: admin_panel
     depends_on:
       - db
       - nginx
     networks:
       - paaspop_bridge
+    expose:
+      - "80"
   # Client side app & games
   client_app:
     build:
       context: ./clientapp
+    container_name: client_app
     depends_on:
       - db
       - nginx
     networks:
       - paaspop_bridge
+    expose:
+      - "80"
   # maria DB & Adminner for database
   db:
     image: mariadb
