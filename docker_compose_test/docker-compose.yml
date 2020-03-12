@@ -37,7 +37,7 @@ services:
     networks:
       - paaspop_bridge
     expose:
-      - "80"
+      - "81"
   # maria DB & Adminner for database
   db:
     image: mariadb
