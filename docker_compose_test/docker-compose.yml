@@ -12,7 +12,7 @@ services:
     ports:
       - 9000:9000
     networks:
-      paaspop_bridge
+      - paaspop_bridge
   # Admin panel vor VJ crew
   admin_panel:
     image: /adminpanel/Dockerfile
@@ -20,7 +20,7 @@ services:
       - db
       - nginx
     networks:
-      paaspop_bridge
+      - paaspop_bridge
   # Client side app & games
   client_app:
     image: /clientapp/Dockerfile
@@ -28,7 +28,7 @@ services:
       - db
       - nginx
     networks:
-      paaspop_bridge
+      - paaspop_bridge
   # maria DB & Adminner for database
   db:
     image: mariadb
