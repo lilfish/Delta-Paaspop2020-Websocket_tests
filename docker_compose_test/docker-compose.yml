@@ -8,14 +8,16 @@ networks:
 services:
   # uwebsockets for socket connections
   websocket_server:
-    image: /uwebsockets/Dockerfile
+    build:
+      context: ./uwebsockets
     ports:
       - 9000:9000
     networks:
       - paaspop_bridge
   # Admin panel vor VJ crew
   admin_panel:
-    image: /adminpanel/Dockerfile
+    build:
+      context: ./adminpanel
     depends_on:
       - db
       - nginx
@@ -23,7 +25,8 @@ services:
       - paaspop_bridge
   # Client side app & games
   client_app:
-    image: /clientapp/Dockerfile
+    build:
+      context: ./clientapp
     depends_on:
       - db
       - nginx
@@ -55,7 +58,8 @@ services:
       - 5876:5876
   # Nginx as firewall + port control?
   nginx:
-    image: nginx/Dockerfile
+    build:
+      context: ./nginx
     logging:
       driver: syslog
       options:
