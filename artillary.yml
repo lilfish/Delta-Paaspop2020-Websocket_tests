@@ -10,6 +10,12 @@
   scenarios:
     - engine: "ws"
       flow:
-        # - send: "A"
-        - think: 6000
+        - send: "A"
+        - think: 50
+        - send: "B"
+        - think: 87
+        - send: "C"
+        - think: 138
+        - send: "D"
+        - think: 400
         - send: "byebye"
