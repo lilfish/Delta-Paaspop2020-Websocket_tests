@@ -8,7 +8,7 @@ networks:
 services:
   # uwebsockets for socket connections
   websocket_server:
-    image: /uWebsockets/Dockerfile
+    image: /uwebsockets/Dockerfile
     ports:
       - 9000:9000
     networks:
