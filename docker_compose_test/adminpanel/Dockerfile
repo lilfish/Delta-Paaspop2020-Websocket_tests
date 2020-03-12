@@ -4,4 +4,4 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-CMD npm run serve -- --port 8081
+CMD npm run serve
