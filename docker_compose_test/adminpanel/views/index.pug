@@ -1,0 +1,24 @@
+- var user = { description: 'foo bar baz' }
+- var authorised = false
+
+doctype html
+html
+	head
+		style
+			include /css/mustard-ui.css
+
+	body
+		nav
+			div(class="nav-container")
+				div(class="nav-logo")
+					a(href="/", class="") Paaspop mini games
+				ul(class="nav-links")
+					li
+						a(href="/", class="active") home
+
+		main
+			#main
+				if authorised
+					p hoi
+				else
+					include includes/login.pug
