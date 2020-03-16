@@ -26,12 +26,13 @@ app.use(session({
 	}
 }));
 
+import db from './server/db'
+
 app.set('view engine', 'pug')
 app.set('public', path.join(__dirname, 'front-end/public'));
 app.set('views', path.join(__dirname, 'front-end/views'));
 app.locals.basedir = path.join(__dirname, 'front-end/public');
 
-import { users, points } from "./server/schemas"
 
 require('./server/routes/adminRoutes')(app);
 
