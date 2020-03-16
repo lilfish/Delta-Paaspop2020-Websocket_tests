@@ -21,11 +21,13 @@ const UserSchema = mongoose.Schema({
 		index: true
 	},
 	nickname: {
-		type: String
+		type: String,
+		required: true
 	},
 	password: {
 		type: String,
-		required: true
+		required: true,
+		select: false 
 	},
 	points: [{
 		type: mongoose.Schema.Types.ObjectId,

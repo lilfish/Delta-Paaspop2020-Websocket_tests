@@ -1,7 +1,7 @@
 import {
 	sessionChecker
 } from '../middleware';
-import 	Users from '../db/models/users'
+import Users from '../db/models/users'
 
 module.exports = function (app) {
 	app.post('/api/login', function (req, res) {
@@ -25,7 +25,8 @@ module.exports = function (app) {
 		Users.create({
 				username: req.body.username,
 				email: req.body.email,
-				password: req.body.password
+				password: req.body.password,
+				nickname: req.body.nickname
 			})
 			.then(user => {
 				req.session.user = user._id;
@@ -45,6 +46,18 @@ module.exports = function (app) {
 		} else {
 			res.send("no session?");
 		}
+	})
+
+	app.get('/api/test', function(req, res) {
+		console.log(req.session)
+		Users.findOne({_id: req.session.user}).then(function(user){
+			console.log(user);
+		})
+		res.send("HOI");
+	})
+
+	app.get('/api/test2', sessionChecker, function(req, res) {
+		res.send("HOI");
 	})
 
 

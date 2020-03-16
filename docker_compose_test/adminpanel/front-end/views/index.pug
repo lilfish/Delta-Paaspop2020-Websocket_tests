@@ -6,19 +6,13 @@ html
 	head
 		style
 			include /css/mustard-ui.css
+			include /css/style.css
 
 	body
-		nav
-			div(class="nav-container")
-				div(class="nav-logo")
-					a(href="/", class="") Paaspop mini games
-				ul(class="nav-links")
-					li
-						a(href="/", class="active") home
-
+		include includes/nav
 		main
-			#main
-				if authorised
-					p hoi
-				else
-					include includes/login.pug
+			div(class="row")
+				if screen == 'users'
+					include includes/users
+				else if screen == 'home'
+					h1= 'Welkom ' + name
