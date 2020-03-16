@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const PointsSchema = mongoose.Schema({
 	game: {
 		type: String,
