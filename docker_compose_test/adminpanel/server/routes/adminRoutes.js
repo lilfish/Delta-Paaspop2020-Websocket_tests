@@ -1,7 +1,7 @@
 import {
 	adminChecker
 } from '../middleware';
-import { Admins, Users } from '../db/models'
+import { Admin, User } from '../db/models'
 
 
 module.exports = function (app) {
@@ -12,7 +12,7 @@ module.exports = function (app) {
 	app.post('/login', function (req, res) {
 		var username = req.body.username,
 			password = req.body.password;
-		Admins.findOne({
+		Admin.findOne({
 			username: username
 		}).then(function (admin) {
 			if (!admin) {
@@ -27,7 +27,7 @@ module.exports = function (app) {
 	});
 
 	app.get('/', adminChecker, function(req, res){
-		Admins.findOne({
+		Admin.findOne({
 			_id: req.session.admin
 		}).then(function(admin){
 				res.render('index', {screen: 'home', name: admin.username })
@@ -45,8 +45,18 @@ module.exports = function (app) {
 	})
 
 	app.get("/users", adminChecker, function(req, res){
-		Users.find({}).then(function(users){
+		User.find({}).then(function(users){
 			res.render('index', {screen: 'users', users: users})
+		})
+	})
+	app.get("/users/:id", adminChecker, function(req, res){
+		User.findOne({_id: req.params.id}).then(function(user){
+			console.log(user);
+			if(!user){
+				res.send("no user found?")
+			} else {
+				res.render('index', {screen: 'user', user: user})
+			}
 		})
 	})
 	//other routes..

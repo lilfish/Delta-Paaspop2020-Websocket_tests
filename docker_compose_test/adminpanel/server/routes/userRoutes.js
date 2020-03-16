@@ -1,13 +1,13 @@
 import {
 	sessionChecker
 } from '../middleware';
-import Users from '../db/models/users'
+import User from '../db/models/user'
 
 module.exports = function (app) {
 	app.post('/api/login', function (req, res) {
 		var username = req.body.username,
 			password = req.body.password;
-		Users.findOne({
+		User.findOne({
 			username: username
 		}).then(function (user) {
 			if (!user) {
@@ -22,7 +22,7 @@ module.exports = function (app) {
 	});
 
 	app.post('/api/register', function (req, res) {
-		Users.create({
+		User.create({
 				username: req.body.username,
 				email: req.body.email,
 				password: req.body.password,
@@ -50,7 +50,7 @@ module.exports = function (app) {
 
 	app.get('/api/test', function(req, res) {
 		console.log(req.session)
-		Users.findOne({_id: req.session.user}).then(function(user){
+		User.findOne({_id: req.session.user}).then(function(user){
 			console.log(user);
 		})
 		res.send("HOI");

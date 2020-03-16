@@ -1,1 +1,1 @@
-import Points from '../db/models/points'
+import Point from '../db/models/point'

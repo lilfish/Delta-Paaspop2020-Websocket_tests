@@ -1,9 +1,12 @@
-import Users from './users'
-import Points from './points'
-import Admins from './admin'
-
+import User from './user'
+import Point from './point'
+import Admin from './admin'
+import Game from './game'
+import History from './history'
 module.exports = {
-	Points,
-	Users,
-	Admins
+	Point,
+	User,
+	Admin,
+	Game,
+	History
 }

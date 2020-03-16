@@ -2,8 +2,11 @@ const mongoose = require('mongoose');
 
 const PointsSchema = mongoose.Schema({
 	game: {
-		type: String,
-		required: [true, "can't be blank"],
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Game'
+	},
+	reason: {
+		type: String
 	},
 	points: {
 		type: Number,
@@ -11,10 +14,10 @@ const PointsSchema = mongoose.Schema({
 	},
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Users'
+		ref: 'User'
 	}
 }, {
 	timestamps: true
 });
 
-module.exports = mongoose.model('Points', PointsSchema);
+module.exports = mongoose.model('Point', PointsSchema);

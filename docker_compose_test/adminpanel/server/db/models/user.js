@@ -31,7 +31,7 @@ const UserSchema = mongoose.Schema({
 	},
 	points: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Points'
+		ref: 'Point'
 	}]
 }, {
 	timestamps: true
@@ -63,4 +63,4 @@ UserSchema.methods.comparePassword = function (password) {
 };
 
 
-module.exports = mongoose.model('Users', UserSchema);
+module.exports = mongoose.model('User', UserSchema);

@@ -1,6 +1,3 @@
-- var user = { description: 'foo bar baz' }
-- var authorised = false
-
 doctype html
 html
 	head
@@ -12,7 +9,11 @@ html
 		include includes/nav
 		main
 			div(class="row")
-				if screen == 'users'
-					include includes/users
-				else if screen == 'home'
+				if screen == 'home'
 					h1= 'Welkom ' + name
+				else if screen == 'users'
+					include includes/users
+				else if screen == 'user'
+					include includes/user
+				else
+					h1 Screen not found

@@ -1,7 +1,9 @@
 div(class="col col-4")
 	div(class="card")
 		script(type='text/javascript' src='/js/filter_users.js')
-		h3(class="card-title") Gebruikers
+		h3.card-title.float-left Gebruikers
+		h6.float-right Totaal: 
+			span=users.length
 		input(type="text" placeholder="Zoeken..." id="filter_input" onkeyup="filter()")
 		table(id="users_table")
 			thead
@@ -10,7 +12,8 @@ div(class="col col-4")
 					th Gebruikersnaam
 					th Bijnaam
 					th Email
-					th Acties
+					th punten
+					th
 			tbody
 				each user, index in users
 					tr
@@ -18,6 +21,6 @@ div(class="col col-4")
 						td= user.username
 						td= user.nickname
 						td= user.email
+						td= user.points.length
 						td 
-							button(class="button-warning button-small" href="/user_detail/"+user._id) details
-							button(class="button-danger button-small" href="/") delete
+							a(class="button button-warning button-small" href="/users/"+user._id) details
