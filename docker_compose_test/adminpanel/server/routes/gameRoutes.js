@@ -1,0 +1,1 @@
+import Points from '../db/models/points'

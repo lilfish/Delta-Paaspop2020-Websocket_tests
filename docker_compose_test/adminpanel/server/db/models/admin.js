@@ -3,7 +3,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 const bcrypt = require('bcrypt'),
 	SALT_WORK_FACTOR = 10;
 
-const UserSchema = mongoose.Schema({
+const AdminSchema = mongoose.Schema({
 	username: {
 		type: String,
 		lowercase: true,
@@ -12,34 +12,19 @@ const UserSchema = mongoose.Schema({
 		match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
 		index: true
 	},
-	email: {
-		type: String,
-		lowercase: true,
-		unique: true,
-		required: [true, "can't be blank"],
-		match: [/\S+@\S+\.\S+/, 'is invalid'],
-		index: true
-	},
-	nickname: {
-		type: String
-	},
 	password: {
 		type: String,
 		required: true
 	},
-	points: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Points'
-	}]
 }, {
 	timestamps: true
 });
 
-UserSchema.plugin(uniqueValidator, {
+AdminSchema.plugin(uniqueValidator, {
 	message: 'is already taken.'
 });
 
-UserSchema.pre('save', function (next) {
+AdminSchema.pre('save', function (next) {
 	var user = this;
 	// only hash the password if it has been modified (or is new)
 	if (!user.isModified('password')) return next();
@@ -56,9 +41,9 @@ UserSchema.pre('save', function (next) {
 	});
 });
 
-UserSchema.methods.comparePassword = function (password) {
+AdminSchema.methods.comparePassword = function (password) {
 	return bcrypt.compareSync(password, this.password);
 };
 
 
-module.exports = mongoose.model('Users', UserSchema);
+module.exports = mongoose.model('Admins', AdminSchema);

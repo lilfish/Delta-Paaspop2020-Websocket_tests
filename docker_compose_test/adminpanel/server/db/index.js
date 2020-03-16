@@ -4,11 +4,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
-
-import {
-	Points,
-	Users
-} from './models';
+import adminSeeder from './seeders/adminSeeder'
 
 mongoose.set('useCreateIndex', true);
 
@@ -24,6 +20,7 @@ mongoose.connect(process.env.MONGO_URI, {
 module.exports = function (app) {
 	console.log("setting sessions to mongo store")
 	app.use(session({
+		key: 'user_sid',
 		store: new MongoStore({
 			mongooseConnection: mongoose.connection
 		}),

@@ -16,4 +16,5 @@ const PointsSchema = mongoose.Schema({
 }, {
 	timestamps: true
 });
+
 module.exports = mongoose.model('Points', PointsSchema);
