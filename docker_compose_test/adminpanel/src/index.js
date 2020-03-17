@@ -10,6 +10,10 @@ const cookieParser = require('cookie-parser');
 // Import all database related things (models and stuff)
 import db from './server/db'
 
+// Import websocket connection
+import websocket from './server/websocket'
+websocket.connect();
+
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
@@ -30,5 +34,7 @@ app.locals.basedir = path.join(__dirname, 'front-end/public');
 require('./server/routes/adminRoutes')(app);
 // user api routes
 require('./server/routes/userRoutes')(app);
+// websocket routes
+require('./server/routes/websocketRoutes')(app);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
