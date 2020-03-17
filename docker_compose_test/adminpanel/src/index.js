@@ -19,11 +19,11 @@ app.use(cookieParser());
 
 // Require all the database logic
 require('./server/db')(app);
-
+console.log(path.join(__dirname, 'front-end/public'));
 app.set('view engine', 'pug')
 app.set('public', path.join(__dirname, 'front-end/public'));
 app.set('views', path.join(__dirname, 'front-end/views'));
-app.use(express.static('front-end/public'))
+app.use(express.static(path.join(__dirname, '/front-end/public')));
 app.locals.basedir = path.join(__dirname, 'front-end/public');
 
 // admin routes

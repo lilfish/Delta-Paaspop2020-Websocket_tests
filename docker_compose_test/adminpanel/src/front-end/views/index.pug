@@ -6,14 +6,14 @@ html
 			include /css/style.css
 
 	body
-		include includes/nav
+		include includes/layout/nav
 		main
 			div(class="container")
 				if screen == 'home'
 					include includes/home/index
 				else if screen == 'users'
-					include includes/users
+					include includes/users/users
 				else if screen == 'user'
-					include includes/user
+					include includes/users/user
 				else
 					h1 Screen not found

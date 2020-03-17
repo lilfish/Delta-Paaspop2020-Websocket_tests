@@ -4,10 +4,11 @@
   "description": "Admin panel for the paaspop mini-game project",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-    "start": "nodemon --ext pug,css,js,json --exec babel-node index.js",
+    "build": "rimraf dist/ && babel src/ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "start": "nodemon --ext pug,css,js,json --exec babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "node-sass --watch front-end/scss -o front-end/public/css"
+    "scss": "node-sass --watch front-end/scss -o front-end/public/css",
+    "check-types": "tsc"
   },
   "author": "Vincent V.",
   "license": "ISC",

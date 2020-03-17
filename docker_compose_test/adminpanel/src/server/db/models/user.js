@@ -27,7 +27,6 @@ const UserSchema = mongoose.Schema({
 	password: {
 		type: String,
 		required: true,
-		select: false 
 	},
 	points: [{
 		type: mongoose.Schema.Types.ObjectId,
