@@ -1,5 +1,5 @@
 var funcs = require('../functions');
-
+var middleware = require('../middleware')
 var game = {
 	game_name: null,
 	game_token: null,
@@ -9,7 +9,8 @@ var game = {
 module.exports = function (app) {
 	app.ws('/game', {
 		open: (ws, req) => {
-			let user = funcs.getHeaderObject(req);
+			let client = funcs.getHeaderObject(req);
+			middleware.is_user(ws, client);
 			console.log(user);
 			if (true) {
 				ws.close();

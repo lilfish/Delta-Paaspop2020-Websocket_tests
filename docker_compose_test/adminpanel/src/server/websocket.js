@@ -1,3 +1,4 @@
+require('dotenv').config()
 const WebSocketClient = require('websocket').client;
 
 var client = new WebSocketClient();
@@ -25,11 +26,12 @@ exports.connect = function () {
 		});
 	});
 	
-	client.connect('ws://localhost:9000/game', ["token", "dwajk"]);
+	client.connect('ws://localhost:9000/admin', ["token", process.env.ADMIN_TOKEN]);
 };
 
 exports.send = function (message = "XD") {
 	if (my_connection && my_connection.connected) {
+		console.log("trying to send", message);
 		my_connection.sendUTF(message.toString());
 	} else {
 		console.log("not connected?");

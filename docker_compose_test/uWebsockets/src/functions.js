@@ -9,7 +9,7 @@ module.exports = {
 		let user = {};
 		req.forEach((k, v) => {
 			if (v.includes(', ') && k == 'sec-websocket-protocol') {
-				user[k] = v.split(', ')
+				user[v.split(', ')[0]] = v.split(', ')[1];
 			} else {
 				user[k] = v;
 			}
