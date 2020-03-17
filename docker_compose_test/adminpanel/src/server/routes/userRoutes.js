@@ -20,8 +20,5 @@ module.exports = function (app) {
 	app.get('/api/test2', sessionChecker, function(req, res) {
 		res.send("HOI");
 	})
-
-
-
 	//other routes..
 }
