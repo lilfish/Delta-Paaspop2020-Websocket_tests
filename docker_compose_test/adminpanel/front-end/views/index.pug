@@ -8,9 +8,9 @@ html
 	body
 		include includes/nav
 		main
-			div(class="row")
+			div(class="container")
 				if screen == 'home'
-					h1= 'Welkom ' + name
+					include includes/home/index
 				else if screen == 'users'
 					include includes/users
 				else if screen == 'user'
