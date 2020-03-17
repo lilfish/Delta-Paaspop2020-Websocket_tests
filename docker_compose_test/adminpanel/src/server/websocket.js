@@ -3,11 +3,10 @@ const WebSocketClient = require('websocket').client;
 var client = new WebSocketClient();
 var my_connection = null;
 
-exports.connect = function () {	
+exports.connect = function () {
 	client.on('connectFailed', function (error) {
 		console.log('Connect Error: ' + error.toString());
 	});
-
 	client.on('connect', function (connection) {
 		my_connection = connection;
 		console.log('WebSocket Client Connected (connect function)');
@@ -25,13 +24,14 @@ exports.connect = function () {
 			}
 		});
 	});
-	client.connect('ws://echo.websocket.org');
+	
+	client.connect('ws://localhost:9000/game', ["token", "dwajk"]);
 };
 
-exports.send = function(message = "XD") {
-		if (my_connection && my_connection.connected) {
-			my_connection.sendUTF(message.toString());
-		} else {
-			console.log("not connected?");
-		}
+exports.send = function (message = "XD") {
+	if (my_connection && my_connection.connected) {
+		my_connection.sendUTF(message.toString());
+	} else {
+		console.log("not connected?");
+	}
 }
