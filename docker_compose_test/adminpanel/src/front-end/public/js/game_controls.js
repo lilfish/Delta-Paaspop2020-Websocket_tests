@@ -1,8 +1,10 @@
 // Start a game
-function start_game(game_id = null) {
+function start_game(game_id = false) {
 	var url = "/game/start";
-	if (!game_id)
+	if (!game_id || game_id == "null") {
+		openDanger("Game id is null?", 4000)
 		return false
+	}
 	let json = JSON.stringify({
 		game_id: game_id,
 	});
@@ -12,11 +14,10 @@ function start_game(game_id = null) {
 	request.open('POST', url, true);
 	request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 	request.onload = function () { // request successful
-		// we can use server response to our request now
-		console.log(request.responseText);
+		openSuccess(request.responseText, 4000)
 	};
-	request.onerror = function () {
-		// request failed
+	request.onerror = function (err) {
+		openDanger(err, 4000)
 	};
 
 	request.send(json);
@@ -34,4 +35,22 @@ function getGameData() {
 	};
 	xhttp.open("GET", "/game/currently", true);
 	xhttp.send();
+}
+
+//Stop a game
+function stop_game() {
+	var url = "/game/stop";
+	var request = new XMLHttpRequest();
+	request.open('POST', url, true);
+	request.onload = function () {
+		if (request.status == 200)
+			openSuccess(request.responseText, 4000)
+		if (request.status == 500)
+			openDanger(request.responseText, 5000)
+	};
+	request.onerror = function (err) {
+		openDanger(err, 10000)
+	};
+	request.send();
+	event.preventDefault();
 }

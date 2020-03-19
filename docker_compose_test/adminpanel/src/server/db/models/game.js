@@ -5,6 +5,10 @@ const GameSchema = mongoose.Schema({
 		type: String,
 		required: [true, "name is required"]
 	},
+	histories: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'History'
+	}],
 	points: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Point'

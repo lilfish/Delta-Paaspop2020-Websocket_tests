@@ -31,3 +31,8 @@
 nav{
 	margin-bottom: 25px;
 }
+
+.absolute_bottom{
+	position: fixed;
+	bottom: 20px;
+}

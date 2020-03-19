@@ -7,16 +7,13 @@ console.log(port);
 const app = uws.App();
 
 // include websocket routes
-require('./websocket_routes/user')(app);
 require('./websocket_routes/game')(app);
 require('./websocket_routes/admin')(app);
 
 // include http routes
 require('./http_routes/admin')(app);
 
-app.get('/*', (res, req) => {
-	res.end("Nothing to find here.");
-}).listen(9000, (listenSocket) => {
+app.listen(9000, (listenSocket) => {
 	if (listenSocket) {
 		console.log('uWebsockets listening to port ', port);
 	}

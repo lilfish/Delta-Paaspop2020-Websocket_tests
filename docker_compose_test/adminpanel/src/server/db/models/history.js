@@ -1,7 +1,14 @@
 const mongoose = require('mongoose');
 
 const HistorySchema = mongoose.Schema({
-	
+	game: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Game'
+	},
+	game_token: {
+		type: String,
+		required: true
+	},
 	users: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User'

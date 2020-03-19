@@ -3,6 +3,7 @@ var middleware = require('../middleware')
 
 module.exports = function (app) {
 	app.ws('/admin', {
+		idleTimeout: 302400,
 		open: (ws, req) => {
 			let client = funcs.getHeaderObject(req);
 			if (middleware.ws_is_admin(ws, client)) {

@@ -66,11 +66,9 @@ exports.get_home = async function (req, res) {
 		screen: 'home',
 		name: null,
 		games: [],
-		last_game: null,
+		last_game: {},
 		current_game: false,
-		next_game: {
-			_id: null
-		}
+		next_game: null
 	}
 
 	await Promise.all([
@@ -79,22 +77,29 @@ exports.get_home = async function (req, res) {
 		}).then(function (admin) {
 			data.name = admin.username;
 		}),
-		Game.find({}, function(err, games) {
+		Game.find({}, function (err, games) {
 			data.games = games;
 		}),
 	]);
-	History.findOne({_id: { $exists: true } } , {}, { sort: { 'createdAt' : -1 } }, function (err, history) {
+	History.findOne({
+		_id: {
+			$exists: true
+		}
+	}, {}, {
+		sort: {
+			'createdAt': -1
+		}
+	}).populate('game').then(function (history) {
 		if (history) {
 			data.last_game = history.game;
 			if (history.gameEnded == null)
 				data.current_game = true;
 			for (var i = 0; i < data.games.length; i++)
-				if (data.games[i] === history.game)
-					data.next_game = data.games[i + 1]
+				if (data.games[i].name === history.game.name)
+					data.next_game = data.games[i + 1] != undefined ? data.games[i + 1] : data.games[0];
 		} else {
 			data.next_game = data.games[Object.keys(data.games)[0]];
 		}
-
 		res.render('index', data);
 	})
 

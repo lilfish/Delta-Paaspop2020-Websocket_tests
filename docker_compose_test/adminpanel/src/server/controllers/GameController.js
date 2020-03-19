@@ -19,39 +19,56 @@ exports.start_game = async function (req, res) {
 	History.findOne({
 		gameEnded: null
 	}).then(function (current_game) {
-		if (current_game){
-			console.log(current_game);			
-			return false;
-
+		if (current_game) {
+			return res.status(500).send('Er is al een spel gestart.');
 		}
-
 		Game.findOne({
 			_id: req.body.game_id
 		}).then(function (game) {
 			var newHistory = new History({
 				game: game,
+				game_token: game_token,
 				gameStarted: new Date()
 			});
 
-			axios.post('localhost:9000/start_game', {
+			axios.post('http://localhost:9000/start_game', {
 					token: process.env.ADMIN_TOKEN,
 					game_token: game_token,
 					game_name: game.name
 				})
 				.then(function (response) {
-					console.log(response);
 					newHistory.save();
 					res.send(response);
 				})
 				.catch(function (error) {
-					console.log("error");
-					res.send(error);
+					res.status(500).send(error);
 				});
 
 		})
 	})
+}
 
-
+exports.stop_game = async function (req, res) {
+	History.findOne({
+		gameEnded: null
+	}).populate('game').then(function (current_game) {
+		if (!current_game) {
+			return res.status(500).send('Geen spel gestart.');
+		} else {
+			axios.post('http://localhost:9000/stop_game', {
+					token: process.env.ADMIN_TOKEN,
+					game_name: current_game.game.name
+				})
+				.then(function (response) {
+					current_game.gameEnded = new Date();
+					current_game.save();
+					res.send("Spel is gestopt.");
+				})
+				.catch(function (error) {
+					res.status(500).send(error);
+				});
+		}
+	});
 
 }
 
