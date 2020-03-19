@@ -1,23 +1,12 @@
 var funcs = require('../functions');
 var middleware = require('../middleware')
-var game = {
-	game_name: null,
-	game_token: null,
-	users: [],
-}
 
 module.exports = function (app) {
 	app.ws('/game', {
 		open: (ws, req) => {
 			let client = funcs.getHeaderObject(req);
-			middleware.is_user(ws, client);
-			console.log(user);
-			if (true) {
-				ws.close();
-			} else {
-				ws.publish('admin', "user joined game");
-				game.users.push(remoteAdress);
-			}
+			middleware.ws_is_user(ws, client);
+			ws.publish('admin', "user joined game");
 		},
 		/* For brevity we skip the other events */
 		message: (ws, message, isBinary) => {

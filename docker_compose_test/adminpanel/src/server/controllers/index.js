@@ -1,8 +1,10 @@
 import UserController from './UserController'
 import AdminController from './AdminController'
-import WebsocketController from './WebsocketsController'
+import WebsocketsController from './WebsocketsController'
+import GameController from './GameController'
 module.exports = {
 	UserController,
 	AdminController,
-	WebsocketController
+	WebsocketsController,
+	GameController
 }

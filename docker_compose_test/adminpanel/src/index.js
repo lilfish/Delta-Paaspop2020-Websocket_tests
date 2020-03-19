@@ -11,12 +11,13 @@ const cookieParser = require('cookie-parser');
 import db from './server/db'
 
 // Import websocket connection
-import websocket from './server/websocket'
-websocket.connect();
+import websocket_connections from './server/websocket'
+websocket_connections.connect('admin');
 
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
+app.use(bodyParser.json())
 
 // initialize cookie-parser to allow us access the cookies stored in the browser. 
 app.use(cookieParser());
@@ -36,5 +37,7 @@ require('./server/routes/adminRoutes')(app);
 require('./server/routes/userRoutes')(app);
 // websocket routes
 require('./server/routes/websocketRoutes')(app);
+// game routes
+require('./server/routes/gameRoutes')(app);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

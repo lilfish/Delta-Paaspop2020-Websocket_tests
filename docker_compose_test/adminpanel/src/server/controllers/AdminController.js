@@ -1,5 +1,7 @@
 import Admin from '../db/models/admin'
 import User from '../db/models/user'
+import Game from '../db/models/game'
+import History from '../db/models/history'
 
 exports.get_login = async function (req, res) {
 	/**
@@ -60,14 +62,42 @@ exports.get_home = async function (req, res) {
 	 * @param { any } res
 	 * @return { res } render index with home screen
 	 */
-	Admin.findOne({
-		_id: req.session.admin
-	}).then(function (admin) {
-		res.render('index', {
-			screen: 'home',
-			name: admin.username
-		})
+	let data = {
+		screen: 'home',
+		name: null,
+		games: [],
+		last_game: null,
+		current_game: false,
+		next_game: {
+			_id: null
+		}
+	}
+
+	await Promise.all([
+		Admin.findOne({
+			_id: req.session.admin
+		}).then(function (admin) {
+			data.name = admin.username;
+		}),
+		Game.find({}, function(err, games) {
+			data.games = games;
+		}),
+	]);
+	History.findOne({_id: { $exists: true } } , {}, { sort: { 'createdAt' : -1 } }, function (err, history) {
+		if (history) {
+			data.last_game = history.game;
+			if (history.gameEnded == null)
+				data.current_game = true;
+			for (var i = 0; i < data.games.length; i++)
+				if (data.games[i] === history.game)
+					data.next_game = data.games[i + 1]
+		} else {
+			data.next_game = data.games[Object.keys(data.games)[0]];
+		}
+
+		res.render('index', data);
 	})
+
 }
 
 exports.get_users = async function (req, res) {
@@ -85,9 +115,8 @@ exports.get_users = async function (req, res) {
 		})
 	})
 }
-
 exports.get_user = async function (req, res) {
-		/**
+	/**
 	 * GET / endpoint *
 	 * @export *
 	 * @param { any } req

@@ -5,6 +5,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 import adminSeeder from './seeders/adminSeeder'
+import gameSeeder from './seeders/gameSeeder'
 
 mongoose.set('useCreateIndex', true);
 

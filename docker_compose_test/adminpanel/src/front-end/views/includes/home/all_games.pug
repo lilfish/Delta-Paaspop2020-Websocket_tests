@@ -1,43 +1,15 @@
 div.card
 	h3-header Alle spellen
+	div= games
 	div.row
-		div.col.col-lg-6
-			div.panel
-				div.panel-head Spel naam
-				div.panel-body spel afbeelding
-				div.panel-footer actie knoppen
-		div.col.col-lg-6
-			div.panel
-				div.panel-head Spel naam
-				div.panel-body spel afbeelding
-				div.panel-footer actie knoppen
-		div.col.col-lg-6
-			div.panel
-				div.panel-head Spel naam
-				div.panel-body spel afbeelding
-				div.panel-footer actie knoppen
-		div.col.col-lg-6
-			div.panel
-				div.panel-head Spel naam
-				div.panel-body spel afbeelding
-				div.panel-footer actie knoppen
-		div.col.col-lg-6
-			div.panel
-				div.panel-head Spel naam
-				div.panel-body spel afbeelding
-				div.panel-footer actie knoppen
-		div.col.col-lg-6
-			div.panel
-				div.panel-head Spel naam
-				div.panel-body spel afbeelding
-				div.panel-footer actie knoppen
-		div.col.col-lg-6
-			div.panel
-				div.panel-head Spel naam
-				div.panel-body spel afbeelding
-				div.panel-footer actie knoppen
-		div.col.col-lg-6
-			div.panel
-				div.panel-head Spel naam
-				div.panel-body spel afbeelding
-				div.panel-footer actie knoppen
+		each val, index in games
+			div.col.col-lg-6
+				div.panel
+					div.panel-head=val.name
+					div.panel-body 
+						p spel afbeelding
+					div.panel-footer
+						button.button-warning.button-small(href="/history/"+val._id) Geschiedenis
+						button.button-warning.button-small(href="/games/"+val._id) Uitgegeven punten: 
+							span=val.points.length
+						button.button-success.button-small.float-right(onClick="start_game('"+val._id+"')") Snel starten

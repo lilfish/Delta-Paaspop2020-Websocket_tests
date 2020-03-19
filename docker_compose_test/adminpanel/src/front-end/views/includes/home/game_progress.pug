@@ -1,16 +1,14 @@
-div.card
-	div.row
-		h3.card-title.col.col-lg-6 Op het moment is er geen game gestart 
-		small.col.col-lg-6.align-right (ik luister naar OSC)
+div.card(class=current_game==true ? "display-none" : "")
+	small.float-right (ik luister naar OSC)
+	h3.card-title Op het moment is er geen game gestart 
 	hr
 	div.row
-		div.col.col-lg-4 Vorig spel
-		div.col.col-lg-4 
+		div.col.col-lg-6 
 			h6 Acties
-			button.button.primary-button spel starten
-		div.col.col-lg-4 Volgend spel
+			button(onClick="start_game('"+next_game._id+"')").button.primary-button spel starten
+		div.col.col-lg-6=next_game
 
-div.card
+div.card(class=current_game==true ? "" : "display-none")
 	div.row
 		h3.card-title.col.col-lg-6 Op het moment speelt 
 			strong spel 1
@@ -18,5 +16,5 @@ div.card
 	hr
 	div.row
 		div.col
-			div.progress-bar.striped
-				span.progress-bar.green(style={width: '80%'})
+			div.progress-bar.striped.animated
+				span.progress-bar-green(style={width: '80%'})

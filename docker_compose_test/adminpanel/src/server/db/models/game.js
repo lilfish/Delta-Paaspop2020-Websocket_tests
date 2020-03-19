@@ -1,14 +1,10 @@
 const mongoose = require('mongoose');
 
 const GameSchema = mongoose.Schema({
-	game: {
+	name: {
 		type: String,
 		required: [true, "name is required"]
 	},
-	history: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Histories'
-	}],
 	points: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Point'
@@ -16,5 +12,6 @@ const GameSchema = mongoose.Schema({
 }, {
 	timestamps: true
 });
+
 
 module.exports = mongoose.model('Game', GameSchema);

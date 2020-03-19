@@ -1,4 +1,4 @@
-import websocket from '../websocket'
+import websocket_connections from '../websocket'
 
 exports.test = async function (req, res) {
 	/**
@@ -7,6 +7,22 @@ exports.test = async function (req, res) {
 	 * @param { any } req
 	 * @param { any } res
 	 */
-	websocket.send("dit word verstuurd op het moment dat de pagina /test word bezocht");
+
+	websocket_connections.send("dit word verstuurd op het moment dat de pagina /test word bezocht");
 	res.send("HOI");
+}
+
+exports.ws_connected = async function (req, res) {
+	/**
+	 * Get /ws_connected  endpoint *
+	 * @export *
+	 * @param { any } req
+	 * @param { any } res
+	 * @returns { object } connection { admin true/false, game true/false }
+	 */
+	let connections = {
+		admin: websocket_connections.connected('admin'),
+		game: websocket_connections.connected('game')
+	}
+	res.send(connections);
 }
