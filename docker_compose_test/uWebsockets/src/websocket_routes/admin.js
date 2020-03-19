@@ -17,7 +17,7 @@ module.exports = function (app) {
 			ws.publish('admin', message, isBinary);
 		},
 		close: (ws, code, message) => {
-			console.log("disconnected ");
+			console.log("Admin disconnected ");
 		}
 	});
 }

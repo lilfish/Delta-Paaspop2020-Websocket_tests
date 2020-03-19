@@ -83,3 +83,18 @@ exports.game_status = async function (req, res) {
 		}
 	});
 }
+
+exports.leaderboard = async function (req, res) {
+	/**
+	 * Get  /api/leaderboard
+	 * @export *
+	 * @param { any } req
+	 * @param { any } res
+	 * @return { res } json of usenickname & points rs sorted by amount of points
+	 */
+	User.find({}, {}, {
+		$sortByCount: 'points'
+	}).select('nickname').select('points').populate('points').then(function (users) {
+		res.send(users);
+	})
+}

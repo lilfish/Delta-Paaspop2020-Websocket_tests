@@ -6,6 +6,7 @@ module.exports = function (app) {
 	app.ws('/game', {
 		idleTimeout: 302400,
 		open: (ws, req) => {
+			console.log("C")
 			let client = funcs.getHeaderObject(req);
 
 			middleware.game_running().then((game) => {
@@ -26,10 +27,10 @@ module.exports = function (app) {
 		},
 		/* For brevity we skip the other events */
 		message: (ws, message, isBinary) => {
-			ws.publish('game', message);
+			console.log(message);
+			ws.publish('game', message, isBinary);
 		},
 		close: (ws, code, message) => {
-			console.log("disconnected ");
 		}
 
 	});

@@ -117,8 +117,15 @@ exports.histories = async function (req, res) {
 	 * @param { any } res
 	 * @returns { res } send all game histories
 	 */
-	History.find({}).then(function (game) {
-		res.send(game);
+	History.find({}, {}, {
+		sort: {
+			'createdAt': -1
+		}
+	}).populate('game').then(function (histories) {
+		res.render('index', {
+			screen: 'histories',
+			histories: histories
+		})
 	})
 }
 exports.history = async function (req, res) {
@@ -129,9 +136,17 @@ exports.history = async function (req, res) {
 	 * @param { any } res
 	 * @returns { res } send all histories of one game
 	 */
-	History.find({
-		game: req.params.id
-	}).then(function (histories) {
-		res.send(histories);
+	History.findOne({
+		_id: req.params.id
+	}).populate('game').populate('points').then(function (history) {
+		History.find({game: history.game}).then(function(histories) {
+			res.render('index', {
+				screen: 'history',
+				history: history,
+				histories: histories,
+				breadcrumbs: [['geschiedenis','history'], [history.game.name]]
+			})
+		})
+		
 	})
 }
