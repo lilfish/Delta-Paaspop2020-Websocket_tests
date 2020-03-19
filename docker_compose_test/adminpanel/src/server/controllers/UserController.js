@@ -1,8 +1,9 @@
 import User from '../db/models/user'
+import History from '../db/models/history'
 
 exports.login = async function (req, res) {
 	/**
-	 * POST auth / login endpoint *
+	 * POST /api/login endpoint *
 	 * @export *
 	 * @param { any } req
 	 * @param { any } res
@@ -25,7 +26,7 @@ exports.login = async function (req, res) {
 }
 exports.register = async function (req, res) {
 	/**
-	 * POST auth / login endpoint *
+	 * POST /api/register endpoint *
 	 * @export *
 	 * @param { any } req
 	 * @param { any } res
@@ -38,16 +39,16 @@ exports.register = async function (req, res) {
 		})
 		.then(user => {
 			req.session.user = user._id;
-			res.send("user registered")
+			res.send("User registered")
 		})
 		.catch(error => {
 			console.log(error);
-			res.send("coulnd't register")
+			res.send("Coulnd't register")
 		});
 }
 exports.logout = async function (req, res) {
 	/**
-	 * POST auth / login endpoint *
+	 * POST /api/logout *
 	 * @export *
 	 * @param { any } req
 	 * @param { any } res
@@ -55,8 +56,30 @@ exports.logout = async function (req, res) {
 	if (req.session.user && req.cookies.user_sid) {
 		res.clearCookie('user_sid');
 		req.session.destroy();
-		res.send("cleared");
+		res.send("Logged out");
 	} else {
-		res.send("no session?");
+		res.send("No session");
 	}
+}
+exports.game_status = async function (req, res) {
+	/**
+	 * Get  /api/game_status
+	 * @export *
+	 * @param { any } req
+	 * @param { any } res
+	 * @return { res } json including game_token and game_name
+	 */
+	History.findOne({
+		gameEnded: null
+	}).populate('game').then(function (current) {
+		if (current && current.game) {
+			let game_data = {
+				game_token: current.game_token,
+				game_name: current.game.name
+			}
+			res.send(game_data);
+		} else {
+			res.send(false);
+		}
+	});
 }

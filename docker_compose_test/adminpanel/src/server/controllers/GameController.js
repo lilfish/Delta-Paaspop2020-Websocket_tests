@@ -19,7 +19,7 @@ exports.start_game = async function (req, res) {
 	History.findOne({
 		gameEnded: null
 	}).then(function (current_game) {
-		if (current_game) {
+		if (current_game && current_game.game) {
 			return res.status(500).send('Er is al een spel gestart.');
 		}
 		Game.findOne({
@@ -48,8 +48,14 @@ exports.start_game = async function (req, res) {
 		})
 	})
 }
-
 exports.stop_game = async function (req, res) {
+	/**
+	 * Post /start  endpoint for starting a game.
+	 * @export *
+	 * @param { any } req
+	 * @param { any } res
+	 * @returns { res } game started true/false
+	 */
 	History.findOne({
 		gameEnded: null
 	}).populate('game').then(function (current_game) {
@@ -73,7 +79,6 @@ exports.stop_game = async function (req, res) {
 	});
 
 }
-
 exports.get_current = async function (req, res) {
 	/**
 	 * Get /currently  endpoint for getting current game status
@@ -82,11 +87,51 @@ exports.get_current = async function (req, res) {
 	 * @param  { any } res
 	 * @returns { object } current_game
 	 */
-	Game.find({
+	History.find({
 		gameEnded: null
 	}).then(function (game) {
 		if (!game)
 			res.send(false);
 		res.send(game);
 	});
+}
+exports.if_game_connect = async function () {
+	/**
+	 * loose function to check if game is connected and websocket should connect
+	 * @export *
+	 * @param  { any } req
+	 * @param  { any } res
+	 */
+	History.findOne({
+		gameEnded: null
+	}).then(function (game) {
+		if (game)
+			websocket_connections.connect();
+	});
+}
+exports.histories = async function (req, res) {
+	/**
+	 * Get /history  endpoint
+	 * @export *
+	 * @param { any } req
+	 * @param { any } res
+	 * @returns { res } send all game histories
+	 */
+	History.find({}).then(function (game) {
+		res.send(game);
+	})
+}
+exports.history = async function (req, res) {
+	/**
+	 * Get /history/_id  endpoint
+	 * @export *
+	 * @param { any } req
+	 * @param { any } res
+	 * @returns { res } send all histories of one game
+	 */
+	History.find({
+		game: req.params.id
+	}).then(function (histories) {
+		res.send(histories);
+	})
 }

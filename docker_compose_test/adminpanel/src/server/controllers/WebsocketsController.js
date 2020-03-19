@@ -6,10 +6,11 @@ exports.test = async function (req, res) {
 	 * @export *
 	 * @param { any } req
 	 * @param { any } res
+	 * @returns { res } dit word verstuurd op het moment dat de pagina /test word bezocht
 	 */
 
 	websocket_connections.send("dit word verstuurd op het moment dat de pagina /test word bezocht");
-	res.send("HOI");
+	res.send("dit word verstuurd op het moment dat de pagina /test word bezocht");
 }
 
 exports.ws_connected = async function (req, res) {

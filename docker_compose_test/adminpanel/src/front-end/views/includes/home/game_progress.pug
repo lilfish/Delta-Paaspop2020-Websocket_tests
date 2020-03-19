@@ -5,7 +5,7 @@ div.card(class=current_game==true ? "display-none" : "")
 	div.row
 		div.col.col-lg-6 
 			h6 Acties
-			button(onClick="start_game('"+next_game._id+"')").button.primary-button.buttn-small spel starten
+			button(onClick="start_game('"+next_game._id+"')").button.button-success.button-small spel starten
 			button(onClick="osc_toggle()").button.button-warning.button-small OSC uitzetten
 		div.col.col-lg-6=next_game.name
 

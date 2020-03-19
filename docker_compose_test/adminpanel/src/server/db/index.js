@@ -7,6 +7,8 @@ const MongoStore = require('connect-mongo')(session);
 import adminSeeder from './seeders/adminSeeder'
 import gameSeeder from './seeders/gameSeeder'
 
+import { GameController } from '../controllers'
+
 mongoose.set('useCreateIndex', true);
 
 mongoose.connect(process.env.MONGO_URI, {
@@ -14,6 +16,9 @@ mongoose.connect(process.env.MONGO_URI, {
 		useNewUrlParser: true,
 	})
 	.then(() => console.log('DB Connected!'))
+	.then(() => {
+		GameController.if_game_connect()
+	})
 	.catch(err => {
 		console.log("Couldn't connect to DB");
 	});

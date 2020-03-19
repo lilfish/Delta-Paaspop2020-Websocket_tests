@@ -59,7 +59,7 @@ game.on('connect', function (connection) {
 
 	connection.on('close', function () {
 		game.connection = connection;
-		console.log('game Connection Closed');
+		console.log('WebSocket Game connection closed (probably because there is no game)');
 	});
 
 	connection.on('message', function (message) {

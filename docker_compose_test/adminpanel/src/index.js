@@ -39,5 +39,7 @@ require('./server/routes/userRoutes')(app);
 require('./server/routes/websocketRoutes')(app);
 // game routes
 require('./server/routes/gameRoutes')(app);
+// points routes
+require('./server/routes/pointsRoutes')(app);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

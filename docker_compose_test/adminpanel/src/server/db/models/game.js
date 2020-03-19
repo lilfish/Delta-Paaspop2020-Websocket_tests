@@ -5,6 +5,10 @@ const GameSchema = mongoose.Schema({
 		type: String,
 		required: [true, "name is required"]
 	},
+	image: {
+		type: String,
+		default: "default.jpg"
+	},
 	histories: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'History'

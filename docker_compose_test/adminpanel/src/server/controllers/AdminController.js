@@ -90,7 +90,7 @@ exports.get_home = async function (req, res) {
 			'createdAt': -1
 		}
 	}).populate('game').then(function (history) {
-		if (history) {
+		if (history && history.game) {
 			data.last_game = history.game;
 			if (history.gameEnded == null)
 				data.current_game = true;
@@ -104,7 +104,6 @@ exports.get_home = async function (req, res) {
 	})
 
 }
-
 exports.get_users = async function (req, res) {
 	/**
 	 * GET / endpoint *

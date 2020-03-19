@@ -15,6 +15,9 @@ function start_game(game_id = false) {
 	request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 	request.onload = function () { // request successful
 		openSuccess(request.responseText, 4000)
+		setTimeout(() => {
+			location.reload();
+		}, 4000);
 	};
 	request.onerror = function (err) {
 		openDanger(err, 4000)
@@ -43,8 +46,12 @@ function stop_game() {
 	var request = new XMLHttpRequest();
 	request.open('POST', url, true);
 	request.onload = function () {
-		if (request.status == 200)
+		if (request.status == 200){
 			openSuccess(request.responseText, 4000)
+			setTimeout(() => {
+				location.reload();
+			}, 4000);
+		}
 		if (request.status == 500)
 			openDanger(request.responseText, 5000)
 	};
