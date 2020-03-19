@@ -38,6 +38,7 @@ exports.start_game = async function (req, res) {
 				})
 				.then(function (response) {
 					newHistory.save();
+					websocket_connections.connect();
 					res.send(response);
 				})
 				.catch(function (error) {
@@ -62,6 +63,7 @@ exports.stop_game = async function (req, res) {
 				.then(function (response) {
 					current_game.gameEnded = new Date();
 					current_game.save();
+					websocket_connections.disconnect();
 					res.send("Spel is gestopt.");
 				})
 				.catch(function (error) {

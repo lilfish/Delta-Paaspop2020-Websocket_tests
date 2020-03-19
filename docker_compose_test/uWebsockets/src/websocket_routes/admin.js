@@ -8,11 +8,16 @@ module.exports = function (app) {
 			let client = funcs.getHeaderObject(req);
 			if (middleware.ws_is_admin(ws, client)) {
 				ws.subscribe('admin');
+			} else {
+				ws.close();
 			}
 		},
 		/* For brevity we skip the other events */
 		message: (ws, message, isBinary) => {
 			ws.publish('admin', message, isBinary);
+		},
+		close: (ws, code, message) => {
+			console.log("disconnected ");
 		}
 	});
 }

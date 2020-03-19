@@ -17,23 +17,25 @@ storage.init({
 const admin_token = process.env.ADMIN_TOKEN;
 
 module.exports = {
-	set_value: function (key, value) {
-		storage.setItem(key, value)
+	set_value: async function (key, value) {
+		return await storage.setItem(key, value)
 			.then(() => {
 				console.log('Stored successfully');
 				return storage.getItem(key);
 			})
-			.then(value =>
-				console.log(`Stored value is ${value}.`)
-			)
 			.catch(err => console.error(err));
 	},
-	get_value: function (key) {
-		return storage.getItem(key);
+	get_value: async function (key) {
+		return await storage.getItem(key).then((value => {
+			return value;
+		}));
 	},
-	del_value: function(key) {
-		storage.removeItem(key).then(() =>{
+	del_value: async function(key) {
+		return await storage.removeItem(key).then(() =>{
 			return true;
 		}).catch(err => console.error(err))
+	},
+	clean_all: async function(key) {
+		return await storage.clear();
 	}
 }
